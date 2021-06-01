@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ai La Trieu Phu</title>
+<style>
+    #start{
+        color: red;
+        width: 200px;
+        text-align: center;
+    }
+    #question{
+        background-color: bisque;
+        margin-left: 200px;
+        border: 3px solid chartreuse;
+        width: 60%;
+        height: 60px;
+        text-align: center;
+        color: red;
+        font-size: 30px;
+
+    }
+    .answer{
+        width: 30%;
+        height: 40px;
+        text-align: center;
+        color: red;
+        font-size: 20px;
+       margin-top: 100px;
+        margin-left: 150px;
+    }
+
+</style>
+
+</head>
+<body background="image/logo.jpg">
+<!--<img src="image/logo.jpg" height="220" width="580"/>-->
+<h1 style="text-align: center"><strong style="color: red"> ĐI TÌM AI LÀ TRIỆU PHÚ</strong> </h1>
+<div id="welcome">
+    <button id="start" onclick="hideGame()" > Start </button>
+</div>
+<div id="hide" style="display: none" >
+  <table style="float: right ; font-size: 30px ">
+    <tr>
+        <td id="time" style="color: red "> </td>
+    </tr>
+      <tr>
+          <td id="diem" style="color: red"> score</td>
+      </tr>
+    </table>
+<div id="game" >
+    <p id="question"> Question </p>
+    <button id="answer0"  onclick="check(0)" class="answer"> Câu trả lời 1 </button>
+    <button  id="answer1" onclick="check(1)" class="answer"> Câu trả lời 2 </button> <br>
+    <button  id="answer2" onclick="check(2)" class="answer"> Câu trả lời 3 </button>
+    <button  id="answer3" onclick="check(3)" class="answer"> Câu trả lời 4 </button> <br>
+
+
+</div>
+</div>
+<script src="altp.js"></script>
+
+
+</body>
+</html>
