@@ -1,5 +1,9 @@
 let time = 30;
 let point = 0;
+let corectSound = new Audio("./sound/correct.mp3");
+let startgameSound = new Audio("./sound/startgame.mp3");
+let endgameSound = new Audio("./sound/endgame.mp3");
+
 function timeDecrease() {
     time--;
     document.getElementById(`time`).innerHTML = `time ${time}`;
@@ -58,14 +62,24 @@ const question = [
         ],
         correct: 0
     }, {
-        question: '00?',
+        question: 'Bộ phim "Chị Dậu" được chuyển thể từ tác phẩm nào?',
         answer: [
-            '00',
-            '00',
-            '00',
-            '00'
+            'Người mẹ cầm súng',
+            'Vợ chồng A Phủ',
+            'Tắt đèn',
+            'Tuổi thơ dữ dội'
         ],
-        correct: 0
+        correct: 2
+    },
+    {
+        question: 'Cho tới thời điểm hiện nay, vườn quốc gia nào của nước ta chưa được công nhận là Vườn Di sản ASEAN?',
+        answer: [
+            'Vườn quốc gia Kon Ka Kinh',
+            'Vườn quốc gia Tam Đảo',
+            'Vườn quốc gia Chư Mom Ray',
+            ' Vườn quốc gia Bái Tử Long'
+        ],
+        correct: 1
     }
 ]
 let i = 0
@@ -79,6 +93,7 @@ function show() {
     document.getElementById('answer3').innerHTML = question[i].answer[3]
     document.getElementById(`time`).innerHTML = `Time: ${time}`;
     document.getElementById('diem').innerHTML = 'Score:' + ' ' +  point ;
+
 }
 
 show()
@@ -87,13 +102,12 @@ show()
 
 function check(answer) {
     if (answer === question[i].correct) {
-        debugger
-        clearInterval(timeGo)
         time = 30;
         point += 1000;
 
         i++
-        if (i < 5) {
+        if (i < 7) {
+            corectSound.play()
             show()
         } else {
             alert('CHÚC MỪNG BẠN ĐÃ TRỞ THÀNH NHÀ TRIỆU PHÚ VỚI TỔNG GIÁ TRỊ : ' + point + 'USD');
@@ -111,6 +125,7 @@ function check(answer) {
         document.getElementById('diem').innerHTML = 'Score:' + ' ' +  point ;
         document.getElementById('game').style.display = "none";
         document.getElementById('time').style.display = "none";
+        endgameSound.play();
         alert('rất tiếc bạn đã trả lời sai và chúng ta dừng cuộc chơi tại đây' + point + 'USD là phần thưởng của bạn')
         document.getElementById('start').style.display = '';
         document.getElementById('hide').style.display ="none";
@@ -140,6 +155,7 @@ function checker() {
 
 setInterval(checker, 1000);
 function hideGame(){
+
         let x =document.getElementById('hide');
         document.getElementById("start").style.display =" none";
     document.getElementById('game').style.display = "";
@@ -150,5 +166,6 @@ function hideGame(){
         x.style.display = "none";
     }
     timeGo = setInterval(timeDecrease, 1000)
+    startgameSound.play()
 
 }
